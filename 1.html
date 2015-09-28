@@ -1,0 +1,549 @@
+<!doctype html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+
+        <title>FE-1</title>
+
+        <meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+        <meta name="author" content="Hakim El Hattab">
+
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+        <link rel="stylesheet" href="css/reveal.css">
+        <link rel="stylesheet" href="css/theme/league.css" id="theme">
+
+        <!-- Code syntax highlighting -->
+        <link rel="stylesheet" href="lib/css/zenburn.css">
+
+        <!-- Printing and PDF exports -->
+        <script>
+            var link = document.createElement( 'link' );
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+            document.getElementsByTagName( 'head' )[0].appendChild( link );
+        </script>
+
+        <!--[if lt IE 9]>
+        <script src="lib/js/html5shiv.js"></script>
+        <![endif]-->
+    </head>
+
+    <body>
+
+        <div class="reveal">
+
+            <!-- Any section element inside of this container is displayed as a slide -->
+            <div class="slides">
+                <section>
+                    <h1>Начала</h1>
+                </section>
+                
+                <section>
+                    <section>
+                        <h2>Как работает браузер</h2>
+                        <p>
+                            <a href="http://habrahabr.ru/post/262239/">http://habrahabr.ru/post/262239/</a><br>
+                            <a href="http://habrahabr.ru/company/rambler-co/blog/258913/">http://habrahabr.ru/company/rambler-co/blog/258913/</a><br>
+                            <a href="http://taligarsiel.com/Projects/howbrowserswork1.htm">http://taligarsiel.com/Projects/howbrowserswork1.htm</a><br>
+                        </p>
+                    </section>
+                    <section>
+                        <strong>1. Браузер получает HTML</strong>
+                        <pre><code class="lang-html" contenteditable>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    <title>ISSoft</title>
+    &lt;link rel="stylesheet" href="css/style.css" /&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    <h1>ISSoft</h1>
+    <p>ISsoft - работа для IT-специалистов <em>info@issoft.by</em></p>
+  &lt;/body&gt;
+&lt;/html>
+                        </code></pre>
+                    </section>
+                    <section>
+                        <strong>2. Браузер создаёт модель страницы</strong>
+                        <img src="res/1/html-diagram.png">
+                    </section>
+                    <section>
+                        <strong>3. Браузер "рисует" страницу</strong>
+                        <img src="res/1/page.png">
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h2>HTM + CSS + JS</h2>
+                    </section>
+                    <section>
+                        <img src="res/1/html-css-js.png">
+                    </section>
+                    <section>
+                        <img src="res/1/html+css-js.png">
+                    </section>
+                    <section>
+                        <img src="res/1/html+css+js.png">
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h2>Сделаем простой скрипт</h2>
+                    </section>
+                    <section>
+                        <pre><code contenteditable>
+var today = new Date();
+var hourNow = today.getHours();
+var greeting;
+
+if (hourNow > 18) {
+    greeting = 'Good evening!';
+} else if (hourNow > 12) {
+    greeting = 'Good afternoon!';
+} else if (hourNow > 0) {
+    greeting = 'Good morning!';
+} else {
+    greeting = 'Welcome!';
+}
+
+document.write('<h3>' + greeting + '</h3>');                        
+                        </code></pre>
+                    </section>
+                    <section>
+                        <h3>1. Подключаем</h3>
+                        <pre><code>
+&lt;body&gt;
+    <h1>ISSoft</h1>
+    &lt;script src="js/add-content.js"&gt;&lt;/script&gt;
+    <p>ISsoft - работа для IT-специалистов <em>info@issoft.by</em></p>
+&lt;/body&gt;
+                        </code></pre>
+                    </section>
+                    <section>
+                        <h3>2. Подключаем</h3>
+                        <pre><code>
+&lt;body&gt;
+    <h1>ISSoft</h1>
+    &lt;script&gt;document.write("Welcome!")&lt;/script&gt;
+    <p>ISsoft - работа для IT-специалистов <em>info@issoft.by</em></p>
+&lt;/body&gt;
+                        </code></pre>
+                    </section>
+                    <section>
+                        <h3>Место важно</h3>
+                        <pre><code>
+&lt;body&gt;
+    <h1>ISSoft</h1>
+    <p>ISsoft - работа для IT-специалистов <em>info@issoft.by</em></p>
+    &lt;script src="js/add-content.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+                        </code></pre>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h2>window object</h2>
+                    </section>
+                    <section>
+                        <img src="res/1/window-object.png">
+                        <p class="fragment">
+                            Window object API: <br>
+                            <a href="https://developer.mozilla.org/en-US/docs/Web/API/Window">
+                                https://developer.mozilla.org/en-US/docs/Web/API/Window
+                            </a>
+                        </p>
+                    </section>
+                    <section>
+                        <p><em>Пример</em></p>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h2>document object</h2>
+                        <p class="fragment">
+                            Document object API: <br>
+                            <a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/document">
+                                https://developer.mozilla.org/en-US/docs/Web/API/Window/document
+                            </a>
+                        </p>
+                    </section>
+                    <section>
+                        <p><em>Пример</em></p>
+                    </section>
+                </section>
+                <section>
+                    <h2>DOM</h2>
+                    <p><em>Document Object Model</em></p>
+                </section>
+                <section>
+                    <section>
+                        <strong>Код страницы</strong>
+                        <pre><code>
+&lt;html>
+  &lt;head>
+    <meta charset="utf-8">
+    <title>ISSoft vacancies</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    &lt;link rel="stylesheet" href="css/style.css">
+  &lt;/head>
+  &lt;body>
+    <div id="page">
+      <h1 id="header">ISSoft</h1>
+      <h2>Вакансии</h2>
+      <ul>
+        <li id="one" class="hot"><em>Senior</em> Front-End Developer</li>
+        <li id="two" class="hot">Front-End Developer</li>
+        <li id="three" class="hot">Linux DevOps Engineer</li>
+        <li id="four">PHP\Front-End Developer</li>
+      </ul>
+    </div>
+  &lt;/body>
+&lt;/html>
+                        </code></pre>
+                    </section>
+                    <section>
+                        <p><strong>DOM tree</strong></p>
+                        <img src="res/1/dom-tree.png" style="min-height: 570px;">
+                    </section>
+                    <section>
+                        <p><strong>Работа с DOM</strong></p>
+                        <p class="fragment">1. Получить элемент</p>
+                        <ul class="fragment">
+                            <li>Выбрать один элемент</li>
+                            <li>Выбрать несколько элементов</li>
+                            <li>Перемещаться между элементами</li>
+                        </ul>
+                        <hr class="fragment">
+                        <p class="fragment">2. Изменить элемент</p>
+                        <ul class="fragment">
+                            <li>Изменить текстовый узел</li>
+                            <li>Работа с внутренним HTML</li>
+                            <li>Изменить атрибуты</li>
+                        </ul>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h2>Доступ к элементам</h2>
+                    </section>
+                    <section>
+                        <p>Запросы к DOM могут возвращать один элемент или несколько</p>
+                    </section>
+                    <section>
+                        <strong>Один элемент</strong>
+                        <table>
+                        <tbody>
+                        <tr>
+                            <td style="vertical-align: middle;width: 60%;font-size: 50px;">
+                            <pre><code class="javascript">getElementById('one')</code></pre>
+                            </td>
+                            <td>
+                            <img src="res/1/byId.png">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="vertical-align: middle;font-size: 50px;">
+                            <pre><code class="javascript">querySelector('li.hot')</code></pre>
+                            </td>
+                            <td>
+                            <img src="res/1/byId.png">
+                            </td>
+                        </tr>
+                        </tbody></table>
+                    </section>
+                    <section>
+                        <strong>Несколько элементов</strong>
+                        <table>
+                        <tbody>
+                        <tr>
+                            <td style="vertical-align: middle;width: 60%;font-size: 50px;">
+                            <pre><code class="javascript">getElementsByTagName('h1')</code></pre>
+                            </td>
+                            <td>
+                            <img src="res/1/byTagH1.png">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="vertical-align: middle;font-size: 50px;">
+                            <pre><code class="javascript">getElementsByTagName('li')</code></pre>
+                            </td>
+                            <td>
+                            <img src="res/1/byTag.png">
+                            </td>
+                        </tr>
+                        </tbody></table>
+                    </section>
+                    <section>
+                        <strong>Несколько элементов</strong>
+                        <table>
+                        <tbody>
+                        <tr>
+                            <td style="vertical-align: middle;width: 60%;font-size: 50px;">
+                            <pre><code class="javascript">getElementsByClassName('hot')</code></pre>
+                            </td>
+                            <td>
+                            <img src="res/1/byClass.png">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="vertical-align: middle;font-size: 50px;">
+                            <pre><code class="javascript">querySelectorAll('li[id]')</code></pre>
+                            </td>
+                            <td>
+                            <img src="res/1/byTag.png">
+                            </td>
+                        </tr>
+                        </tbody></table>
+                    </section>
+                    <section>
+                        <h3>NodeList</h3>
+                        <ul>
+                            <li class="fragment">Live NodeList (getElementsBy...)</li>
+                            <li class="fragment">Static NodeList (querySelector...)</li>
+                        </ul>
+                        <div class="fragment">
+                            <pre><code>
+var elements = document.getElementsByClassName('hot');
+if (elements.length > 1) {
+    var firstItem = elements.item(0);
+}    
+                            </code></pre>
+                            <pre><code>
+var elements = document.getElementsByClassName('hot');
+if (elements.length > 1) {
+    var firstItem = elements[0];
+}  
+                            </code></pre>
+                        </div>
+                    </section>
+                    <section>
+                        <h3>Перемещение по дереву</h3>
+                        <ul>
+                            <li>parentNode</li>
+                            <li>previousSibling/nextSibling</li>
+                            <li>firstChild/lastChild</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <pre><code data-trim>
+<ul><li id="one" class="hot"><em>Senior</em> Front-End Developer</li><li &#13;id="two" class="hot">Front-End Developer</li><li id="three" class="hot">&#13;Linux DevOps Engineer</li><li id="four">PHP\Front-End Developer</li></ul></code></pre>
+                        <pre><code>
+var startItem = document.getElementById('two');
+var prevItem = startItem.previousSibling;
+var nextItem = startItem.nextSibling;
+
+prevItem.className = 'complete';
+nextItem.className = 'cool';
+                        </code></pre>
+                        <img class="fragment" src="res/1/siblings.png" style="width:40%">
+                    </section>
+                    <section>
+                        <pre><code data-trim>
+&lt;ul &#13;&gt;&lt;li id="one" class="hot"><em>Senior</em> Front-End Developer&lt;/li &#13;&gt;&lt;li id="two" class="hot">Front-End Developer&lt;/li &#13;&gt;&lt;li id="three" class="hot">Linux DevOps Engineer&lt;/li &#13;&gt;&lt;li id="four">PHP\Front-End Developer&lt;/li &#13;&gt;&lt;/ul&gt;</code></pre>
+                        <pre><code>
+var startItem = document.getElementsByTagName('ul')[0];
+var firstItem = startItem.firstChild;
+var lastItem = startItem.lastChild;
+
+firstItem.className = 'complete';
+lastItem.className = 'cool';
+                        </code></pre>
+                        <img class="fragment" src="res/1/child.png" style="width:40%">
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h2>Как получать и изменять текст</h2>
+                    </section>
+                    <section>
+                        <strong>nodeValue</strong>
+                        <pre style="font-size: 23px;"><code>
+<li id="one" class="hot"><em>Senior</em> Front-End Developer</li>
+                        </code></pre>
+                        <img src="res/1/liNode.png">
+                        <pre class="fragment" style="font-size: 23px;"><code>
+document.getElementById('one').firstChild.nextSibling.nodeValue
+                        </code></pre>
+                    </section>
+                    <section>
+                        <strong>Другие пути</strong>
+                        <pre style="font-size: 23px;"><code>
+<li id="one" class="hot"><em>Senior</em> Front-End Developer</li>
+                        </code></pre>
+                        <pre class="fragment" style="font-size: 23px;"><code>
+document.getElementById('one').textContent
+
+document.getElementById('one').innerText
+                        </code></pre>
+                        <table class="fragment">
+                            <tr>
+                                <th>textContent</th><th>innerText</th>
+                            </tr>
+                            <tr>
+                                <td>no IE8</td><td>CSS, no Firefox</td>
+                            </tr>
+                        </table>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h2>Как получать и изменять HTML</h2>
+                        <div class="fragment">
+                            <p><strong>Два пути (три)</strong></p>
+                            <ul>
+                                <li>Свойство innerHTML</li>
+                                <li>Манипуляции с DOM</li>
+                            </ul>
+                        </div>
+                    </section>
+                    <section>
+                        <strong>innerHTML</strong>
+                        <pre><code>
+var firstItem = document.getElementById('one');
+
+var content = firstItem.innerHTML;
+
+firstItem.innerHTML = '<a href=\"http://example.org\">' + content + '</a>';
+                        </code></pre>
+                    </section>
+                    <section>
+                        <strong>Манипуляции с DOM</strong>
+                        <pre><code>
+var newEl = document.createElement('li');
+
+var newText = document.createTextNode('Lead Java Developer');
+
+newEl.appendChild(newText);
+
+var position = document.getElementsByTagName('ul')[0];
+
+position.appendChild(newEl);
+                        </code></pre>
+                        <pre><code>
+createElement('element')
+
+createTextNode('text')
+
+appendChild(node)
+
+insertBefore(node)
+                        </code></pre>
+                    </section>
+                    <section>
+                        <strong>Удаление элементов</strong>
+                        <pre><code>
+var removeEl = document.getElementsByTagName('li')[3];
+
+var containerEl = document.getElementsByTagName('ul')[0];
+
+containerEl.removeChild(removeEl);
+                        </code></pre>
+                    </section>
+                    <section>
+                        <strong>Итак, три метода работы с DOM</strong>
+                        <h1></h1>
+                        <table>
+                            <tr class="fragment">
+                                <th>document.write()</th>
+                                <th>innerHTML</th>
+                                <th>DOM</th>
+                            </tr>
+                            <tr class="fragment" style="font-size: 20px">
+                                <td>
+                                    + очень быстро<br>
+                                    - только при загрузке<br>
+                                    - непредсказуемо после<br>
+                                    - вообще не безопасно<br>
+                                </td>
+                                <td>
+                                    + меньще кода<br>
+                                    + быстрее DOM<br>
+                                    + проще удалять<br>
+                                    - безопасность<br>
+                                    - сложно<br>
+                                    - события могут поломаться<br>
+                                </td>
+                                <td>
+                                    + удобно работать с одним элементом в группе<br>
+                                    + не влияет на события<br>
+                                    + удобно в циклах<br>
+                                    - медленне<br>
+                                    - часто больше кода<br>
+                                </td>
+                            </tr>
+                        </table>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h2>Что можно сделать с атрибутами</h2>
+                    </section>
+                    <section>
+                        <strong>Методы</strong>
+                        <pre><code class='javascript'>
+element.getAttribute('class');
+
+element.hasAttribute('class');
+
+element.setAttribute('class', 'hot');
+
+element.removeAttribute('align');
+                        </code></pre>
+                        <strong>Свойсва</strong>
+                        <pre><code class='javascript'>
+element.className
+
+element.id
+                        </code></pre>
+                    </section>
+                    <section>
+                        <pre><code class='javascript'>
+var firstItem = document.getElementById('one');
+
+if (firstItem.hasAttribute('class')) {
+
+  firstItem.removeAttribute('class');
+
+}
+                        </code></pre>
+                    </section>
+                </section>
+            </div>
+        </div>
+
+        <script src="lib/js/head.min.js"></script>
+        <script src="js/reveal.js"></script>
+
+        <script>
+
+            // Full list of configuration options available at:
+            // https://github.com/hakimel/reveal.js#configuration
+            Reveal.initialize({
+                controls: true,
+                progress: true,
+                history: true,
+                center: false,
+
+                transition: 'zoom',//'slide', // none/fade/slide/convex/concave/zoom
+
+                // Optional reveal.js plugins
+                dependencies: [
+                    { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                    { src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+                    { src: 'plugin/zoom-js/zoom.js', async: true },
+                    { src: 'plugin/notes/notes.js', async: true }
+                ]
+            });
+
+        </script>
+
+    </body>
+</html>
