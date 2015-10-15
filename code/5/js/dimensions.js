@@ -1,0 +1,1 @@
+$(function() {  var listHeight = $('#page').height();  $('ul').append('<p>Height: ' + listHeight + 'px</p>');    $('li').width('75%');    $('li#one').width(525);    $('li#two').width('300px');});
