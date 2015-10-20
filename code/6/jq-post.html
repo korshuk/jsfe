@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>ISsoft</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+
+    <header>
+      <h1>ISSoft</h1>
+    </header>
+
+    <section id="content">
+      <div class="half">
+        <img src="img/form-image.png"/>
+      </div>
+      <div class="half">
+        <form id="register" action="register.php" method="post">
+          <h2>Регистрация</h2>
+          <label for="name">Username</label>
+          <input type="text" id="name" name="name" />
+          <label for="pwd">Password</label>
+          <input type="password" id="pwd" name="pwd" />
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" />
+          <input type="submit" value="Join" />
+        </form>
+      </div>
+    </section>
+
+    <script src="js/jquery-1.11.0.min.js"></script>
+    <script src="js/jq-post.js"></script>
+
+  </body>
+</html>

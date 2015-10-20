@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<vacancies>
+  <vacancy>
+    <name>Senior Front-End Developer</name>
+    <map>img/vac-js.png</map>
+    <requirement>Опыт работы с Javascript</requirement>
+    <requirement>Опыт работы HTML/CSS</requirement>
+  </vacancy>
+  <vacancy>
+    <name>PHP\WordPress Developer</name>
+    <map>img/vac-php.jpg</map>
+    <requirement>Опыт построения WordPress CMS websites</requirement>
+    <requirement>Опыт PHPпрограммирования, MySQL, HTML, CSS и JavaScript</requirement>
+  </vacancy>
+  <vacancy>
+    <name>Sales Manager</name>
+    <map>img/vac-sales.jpg</map>
+    <requirement>Опыт работы в продажах в сфере IT от 2 лет</requirement>
+    <requirement>Знание английского языка на высоком уровне</requirement>
+  </vacancy>
+</vacancies>
