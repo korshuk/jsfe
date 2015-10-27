@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+
+        <title>FE-8</title>
+
+        <meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+        <meta name="author" content="Hakim El Hattab">
+
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+        <link rel="stylesheet" href="css/reveal.css">
+        <link rel="stylesheet" href="css/theme/league.css" id="theme">
+
+        <!-- Code syntax highlighting -->
+        <link rel="stylesheet" href="lib/css/zenburn.css">
+
+        <!-- Printing and PDF exports -->
+        <script>
+            var link = document.createElement( 'link' );
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+            document.getElementsByTagName( 'head' )[0].appendChild( link );
+        </script>
+
+        <!--[if lt IE 9]>
+        <script src="lib/js/html5shiv.js"></script>
+        <![endif]-->
+    </head>
+
+    <body>
+
+        <div class="reveal">
+
+            <!-- Any section element inside of this container is displayed as a slide -->
+            <div class="slides">
+                <section>
+                    <h1>Рецепты</h1>
+                </section>
+                <section>
+                    <section>
+                        <h2>Аккордеон</h2>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h2>Табы</h2>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h2>Модальное окно</h2>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h2>jQuery плагин</h2>
+                    </section>
+                    <section>
+                        <pre class="fragment"><code class="javascript">
+$('.menu').accordion(500);                            
+                        </code></pre>
+                        <pre class="fragment"><code class="javascript">
+$.fn.accordion = function (speed) { 
+    //...
+}                         
+                        </code></pre>
+                         <pre class="fragment"><code class="javascript">
+$.fn.accordion = function (speed) { 
+    //...
+    return this;
+}                         
+                        </code></pre>
+                        <pre class="fragment"><code class="javascript">
+(function($) {
+  $.fn.accordion = function (speed) {
+  //...
+}(jQuery));
+                        </code></pre>
+                    </section>
+                </section>
+                <section>
+                    <h2>Домашнее задание</h2>
+                    <p>Нужно сделать так, чтобы список дел из предыдущего задания можно было сохранять и загружать с сервера с помощью AJAX запросов</p>
+                    <p>Для этого существует сервер "https://jsfeajax.herokuapp.com/", который имеет принимать GET и POST запросы</p>
+                    <p>Любой запрос в урле должен содержать уникальный компонент (например ИмяФамилия), для того, чтобы разделить данные разных пользователей. <br>
+                    Например GET запрос https://jsfeajax.herokuapp.com/IgorKorshuk/todo вернет список дел, если я IgorKorshuk хотя бы раз обращался к серверу, если нет, то создаст новый пустой список на сервере, с которым можно работать и вернет пустой массив.
+                    </p>
+                    <p>Итак, API</p>
+                    <ul>
+                        <li>get 'https://jsfeajax.herokuapp.com/' + UserName + '/todo' возвращает список дел</li>
+                        <li>post 'https://jsfeajax.herokuapp.com/' + UserName + '/todo' создаёт или обновляет существующее дело и возвращает список. Если нужно создать новое дело, то нужно послать такой объект: { "text": 'тут находится текст' }, сервер создаст дело, положит его в список и вернет новый список. В том массиве, который возвращает сервер будут такие объекты: { "text":"моё событие", "id":"c712d8b0-7b1c-11e5-b6fc-75340f204013", "status":"new"}. У всех новых событий статус автоматически делается "new", а вообще вы потом его можете менять как захотите (это для того, чтобы можно было менять состояние объекта). Если послать на этот POST запрос полный объект, с существующим id, то сервер перезапишет его (так можно статус менять)</li>
+                        <li>есть еще post запрос 'https://jsfeajax.herokuapp.com/' + UserName + '/todo/delete'. Если туда послать объект целиком (с айдишкой, статусом и текстом), то объект удалится из базы и сервер вернет список дел без него</li>
+                    </ul>
+                    <p>
+                        Подсказка: будьте внимательны, если делает $.post(), то никаких хитростей нет, а если post запрос сделан с помощью $.ajax(), то с объектом, который посылаете нужно сделать JSON.stringify()
+                    </p>
+                    <p>
+                        чтобы проверить работает ли сервер вообще и отвечает вам, просто сделайте get запрос или откройте в браузере 'https://jsfeajax.herokuapp.com/IgorK/todo' - можно посмотреть белиберду, которой я пробовал его работоспособность
+                    </p>
+                </section>
+            </div>
+        </div>
+
+        <script src="lib/js/head.min.js"></script>
+        <script src="js/reveal.js"></script>
+
+        <script>
+
+            // Full list of configuration options available at:
+            // https://github.com/hakimel/reveal.js#configuration
+            Reveal.initialize({
+                controls: true,
+                progress: true,
+                history: true,
+                center: false,
+
+                transition: 'zoom',//'slide', // none/fade/slide/convex/concave/zoom
+
+                // Optional reveal.js plugins
+                dependencies: [
+                    { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                    { src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+                    { src: 'plugin/zoom-js/zoom.js', async: true },
+                    { src: 'plugin/notes/notes.js', async: true }
+                ]
+            });
+
+        </script>
+
+    </body>
+</html>
