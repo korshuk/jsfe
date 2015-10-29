@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+
+        <title>FE-9</title>
+
+        <meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+        <meta name="author" content="Hakim El Hattab">
+
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+        <link rel="stylesheet" href="css/reveal.css">
+        <link rel="stylesheet" href="css/theme/league.css" id="theme">
+
+        <!-- Code syntax highlighting -->
+        <link rel="stylesheet" href="lib/css/zenburn.css">
+
+        <!-- Printing and PDF exports -->
+        <script>
+            var link = document.createElement( 'link' );
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+            document.getElementsByTagName( 'head' )[0].appendChild( link );
+        </script>
+
+        <!--[if lt IE 9]>
+        <script src="lib/js/html5shiv.js"></script>
+        <![endif]-->
+    </head>
+
+    <body>
+
+        <div class="reveal">
+
+            <!-- Any section element inside of this container is displayed as a slide -->
+            <div class="slides">
+                <section>
+                    <h1>Рецепты работы с массивами</h1>
+                </section>
+                <section>
+                    <section>
+                        <h2>Фильтруем массивы</h2>
+                    </section>
+                    <section>
+                        <h2>Используем методы работы с массивыми</h2>
+                        <pre><code class="javascript">
+array.forEach(iteratorFuncName); //с массивом ничего не произойдет
+                        </code></pre>
+                        <pre><code class="javascript">
+array.filter(filterFuncName); //массив измениться                           
+                        </code></pre>
+                        <p><em>пример forEach()</em></p>
+                        <p><em>пример filter()</em></p>
+                        <p style="text-align: left;font-size: 24px;">Есть еще метод <a href="http://api.jquery.com/filter/">filter()</a> у jQuery. Это не метод работы с массивами, а фильтр элементов jQuery Selection. Можно фильтровать элементы по классу или любой другой CSS выборке или с помощью фильтрующей функции или используя еще другой набор jQuery элементов (результатом фильтрации будут те элементы, которые содержаться в фильтрующей выборке)</p>
+                    </section>
+                    <section>
+                        <h2>Динамический фильтр</h2>
+                        <p>Подключим красивый <a href="http://refreshless.com/nouislider/">плагин</a> для начала</p>
+                        <p><em>пример</em></p>
+                    </section>
+                    <section>
+                        <h2>Фотогалерея с фильтром</h2>
+                        <h3>data-атрибуты</h3>
+                        <pre><code class='html'>
+&lt;div data-image-tag="текст"&gt;                           
+                        </code></pre>
+                        <pre><code class='javascript'>
+//jQuery
+$('div').data('imageTag');
+
+$('div').data('imageTag', 'новое значение')                       
+                        </code></pre>
+                        <p><em>пример</em></p>
+                    </section>
+                    <section>
+                        <h2>Фотогалерея с поиском</h2>
+                        <p><em>пример</em></p>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h2>Сортировка</h2>
+                    </section>
+                    <section>
+                        <pre><code class='javascript'>
+array.sort();        
+
+array.sort(sortFunction);            
+                        </code></pre>
+                    </section>
+                    <section>
+                        <h2>Сортировочные функции</h2>
+                        <pre><code class='javascript'>
+function (a, b) {
+    if (a.num === b.num) {
+        return 0;
+    }
+    if (a.num > b.num) {
+        return 1; // >0
+    }
+    if (a.num < b.num) {
+        return -1; // &lt;0
+    }
+}          
+                        </code></pre>
+                    </section>
+                    <section>
+                        <p>сортировка чисел</p>
+                        <pre><code class='javascript'>
+numbers.sort(function(a,b){
+    return a - b;
+})
+                        </code></pre>
+                    </section>
+                    <section>
+                        <h2>Таблица с сортировкой</h2>
+                        <p><em>пример</em></p>
+                    </section>
+                </section>
+                <section>
+                    <a href="https://learn.javascript.ru/drag-and-drop">Drag and Drop</a>
+                </section>
+            </div>
+        </div>
+
+        <script src="lib/js/head.min.js"></script>
+        <script src="js/reveal.js"></script>
+
+        <script>
+
+            // Full list of configuration options available at:
+            // https://github.com/hakimel/reveal.js#configuration
+            Reveal.initialize({
+                controls: true,
+                progress: true,
+                history: true,
+                center: false,
+
+                transition: 'zoom',//'slide', // none/fade/slide/convex/concave/zoom
+
+                // Optional reveal.js plugins
+                dependencies: [
+                    { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                    { src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+                    { src: 'plugin/zoom-js/zoom.js', async: true },
+                    { src: 'plugin/notes/notes.js', async: true }
+                ]
+            });
+
+        </script>
+
+    </body>
+</html>
