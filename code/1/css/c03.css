@@ -1,6 +1,3 @@
-/* JavaScript & jQuery - Chapter 3: Functions, Methods & Programming */
-/* The book used a font called Eau Sans - the download examples use Open Sans */
-
 @import url(http://fonts.googleapis.com/css?family=Open+Sans);
 
 body {
@@ -39,8 +36,6 @@ p + p {
 p + h2 {
   margin: 10px 0 0 0;}
 
-/* message under the logo */
-
 #message {
   float: left;
   clear: left;
@@ -49,8 +44,6 @@ p + h2 {
   width:170px;
   padding: 18px 30px;
   text-align: center;}
-
-/* black bar across the right hand side of the page */
 
 #info {
   background-color: #1e1b1e;
@@ -63,7 +56,6 @@ p + h2 {
   top: 0;
   right: 15%;}
 
-/* details in the black bar */
 
 #hotelName {
   text-transform: uppercase;
@@ -116,8 +108,6 @@ p + h2 {
 
 .false {
   background-position: 120px -28px;}
-
-/* footer */
 
 #footer {
   position: absolute;

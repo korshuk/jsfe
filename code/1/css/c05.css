@@ -106,7 +106,6 @@ p {
 #scriptResults {
 	padding-bottom: 10px;}
 
-/* Small screen - acts like the app would */
 @media only screen and (max-width: 500px) {
     body {
         background-color: #584f4d;
@@ -127,7 +126,6 @@ p {
         margin: 20px auto 20px auto;
     }
 }
-/* Larger screens act like a demo for the app */
 @media only screen and (min-width: 960px) {
     #page {
         max-width: 480px;
