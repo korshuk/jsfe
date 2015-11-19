@@ -40,6 +40,163 @@
 
             <!-- Any section element inside of this container is displayed as a slide -->
             <div class="slides">
+            <section>
+                    <section>
+                        <h2>Как получать и изменять текст</h2>
+                    </section>
+                    <section>
+                        <strong>nodeValue</strong>
+                        <pre style="font-size: 23px;"><code>
+<li id="one" class="hot"><em>Senior</em> Front-End Developer</li>
+                        </code></pre>
+                        <img src="res/1/liNode.png">
+                        <pre class="fragment" style="font-size: 23px;"><code>
+document.getElementById('one').firstChild.nextSibling.nodeValue
+                        </code></pre>
+                    </section>
+                    <section>
+                        <strong>Другие пути</strong>
+                        <pre style="font-size: 23px;"><code>
+<li id="one" class="hot"><em>Senior</em> Front-End Developer</li>
+                        </code></pre>
+                        <pre class="fragment" style="font-size: 23px;"><code>
+document.getElementById('one').textContent
+
+document.getElementById('one').innerText
+                        </code></pre>
+                        <table class="fragment">
+                            <tr>
+                                <th>textContent</th><th>innerText</th>
+                            </tr>
+                            <tr>
+                                <td>no IE8</td><td>CSS, no Firefox</td>
+                            </tr>
+                        </table>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h2>Как получать и изменять HTML</h2>
+                        <div class="fragment">
+                            <p><strong>Два пути (три)</strong></p>
+                            <ul>
+                                <li>Свойство innerHTML</li>
+                                <li>Манипуляции с DOM</li>
+                            </ul>
+                        </div>
+                    </section>
+                    <section>
+                        <strong>innerHTML</strong>
+                        <pre><code>
+var firstItem = document.getElementById('one');
+
+var content = firstItem.innerHTML;
+
+firstItem.innerHTML = '<a href=\"http://example.org\">' + content + '</a>';
+                        </code></pre>
+                    </section>
+                    <section>
+                        <strong>Манипуляции с DOM</strong>
+                        <pre><code>
+var newEl = document.createElement('li');
+
+var newText = document.createTextNode('Lead Java Developer');
+
+newEl.appendChild(newText);
+
+var position = document.getElementsByTagName('ul')[0];
+
+position.appendChild(newEl);
+                        </code></pre>
+                        <pre><code>
+createElement('element')
+
+createTextNode('text')
+
+appendChild(node)
+
+parentElement.insertBefore(node1, node2)
+                        </code></pre>
+                    </section>
+                    <section>
+                        <strong>Удаление элементов</strong>
+                        <pre><code>
+var removeEl = document.getElementsByTagName('li')[3];
+
+var containerEl = document.getElementsByTagName('ul')[0];
+
+containerEl.removeChild(removeEl);
+                        </code></pre>
+                    </section>
+                    <section>
+                        <strong>Итак, три метода работы с DOM</strong>
+                        <h1></h1>
+                        <table>
+                            <tr class="fragment">
+                                <th>document.write()</th>
+                                <th>innerHTML</th>
+                                <th>DOM</th>
+                            </tr>
+                            <tr class="fragment" style="font-size: 20px">
+                                <td>
+                                    + очень быстро<br>
+                                    - только при загрузке<br>
+                                    - непредсказуемо после<br>
+                                    - вообще не безопасно<br>
+                                </td>
+                                <td>
+                                    + меньще кода<br>
+                                    + быстрее DOM<br>
+                                    + проще удалять<br>
+                                    - безопасность<br>
+                                    - сложно<br>
+                                    - события могут поломаться<br>
+                                </td>
+                                <td>
+                                    + удобно работать с одним элементом в группе<br>
+                                    + не влияет на события<br>
+                                    + удобно в циклах<br>
+                                    - медленне<br>
+                                    - часто больше кода<br>
+                                </td>
+                            </tr>
+                        </table>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h2>Что можно сделать с атрибутами</h2>
+                    </section>
+                    <section>
+                        <strong>Методы</strong>
+                        <pre><code class='javascript'>
+element.getAttribute('class');
+
+element.hasAttribute('class');
+
+element.setAttribute('class', 'hot');
+
+element.removeAttribute('align');
+                        </code></pre>
+                        <strong>Свойства</strong>
+                        <pre><code class='javascript'>
+element.className
+
+element.id
+                        </code></pre>
+                    </section>
+                    <section>
+                        <pre><code class='javascript'>
+var firstItem = document.getElementById('one');
+
+if (firstItem.hasAttribute('class')) {
+
+  firstItem.removeAttribute('class');
+
+}
+                        </code></pre>
+                    </section>
+                </section>
                 <section>
                     <h1>События</h1>
                 </section>
@@ -115,229 +272,7 @@ elUsername.addEventListener('blur', checkUsername, false);
                         </pre></code>
                     </section>
                 </section>
-                <section>
-                    <section>
-                        <h2>Как передать параметр в реакцию на событие</h2>
-                        <div class="fragment">
-                            <pre><code>
-var elUsername = document.getElementById('username');
-var elMsg      = document.getElementById('feedback');
-
-function checkUsername(minLength) {
-  if (elUsername.value.length < minLength) {
-    // Set the error message
-    elMsg.innerHTML = 'Username must be ' + minLength + ' characters or more';
-  } else {
-    elMsg.innerHTML = '';
-  }
-}
-                            </code></pre>
-                        </div>
-                        <div class="fragment">
-                            <pre><code>
-elUsername.addEventListener('blur', function() {
-  checkUsername(5);
-}, false);
-                            </code></pre>
-                        </div>
-                    </section>
-                    
-                </section>
-                <section>
-                    <section>
-                        <h2>Как поддерживать старые IE</h2>
-                         <div class="fragment">
-                            <pre><code>
-if (elUsername.addEventListener) {
-
-  elUsername.addEventListener('blur', function(){
-    checkUsername(5);
-  }, false);
-
-} else {
-
-  elUsername.attachEvent('onblur', function(){
-    checkUsername(5);
-  });
-
-}                                
-                            </code></pre>
-                    </section>
-                </section>
-                <section>
-                    <section>
-                        <h2>Судьба события</h2>
-                        <p>(Event flow)</p>
-                    </section>
-                    <section>
-                        <h3>Event bubbling & capturing</h3>
-                         <img src="res/2/event-flow.png">
-                    </section>
-                    <section>
-                        <h3>пример</h3>
-                    </section>
-                </section>
-                 <section>
-                    <section>
-                        <h2>Объект event</h2>
-                        <pre class="javascript"><code>
-//Property
-event.target
-
-event.type
-
-//Methods
-event.preventDefault()
-
-event.stopPropagation()                        
-                        </code></pre>
-                    </section>
-                    <section>
-                            <h3>Объект Event и IE5-8</h3>
-                            <pre class="javascript"><code>
-if (!e) {
-  e = window.event;
-}
-el = e.target || e.srcElement;
-                            </code></pre>
-                            <p class="fragment"><em>пример</em></p>
-                        </section>
-                        <section>
-                            <h3>Изменение стандартного поведения</h3>
-                            <pre class="fragment javascript"><code>
-if (e.preventDefault) {
-    e.preventDefault();
-} else {
-    e.returnValue = false;
-}
-                            </code></pre>
-                            <pre class="fragment javascript"><code>
-if (e.stopPropagation) {
-    e.stopPropagation();
-} else {
-    e.cancelBubble = false;
-}
-                            </code></pre>
-                            <pre class="fragment javascript"><code>
-return false;
-                            </code></pre>
-                        </section>
-                </section>
-                <section>
-                    <section>
-                        <h2>Делегирование событий</h2>
-                        <p><em>пример</em></p>
-                    </section>
-                </section>
-                <section>
-                    <section>
-                        <h2>Примеры событий</h2>
-                    </section>
-                </section>
-                <section>
-                    <section>
-                        <h2>UI события</h2>
-                    </section>
-                        <section>
-                            <h3>load</h3>
-                            <pre><code contenteditable>
-function setup() {
-  var textInput;
-  textInput = document.getElementById('username');
-  textInput.focus();
-}
-
-window.addEventListener('load', setup, false);
-                            </code></pre>
-                        </section>
-                        <section>
-                            <h3>Focus и Blur</h3>
-                            <pre><code contenteditable>
-function checkUsername() {
-  var username = el.value;
-  if (username.length < 5) {
-    elMsg.className = 'warning';
-    elMsg.textContent = 'Not long enough, yet...';
-  } else {
-    elMsg.textContent = '';
-  }
-}
-
-function tipUsername() {
-  elMsg.className = 'tip';
-  elMsg.innerHTML = 'Username must be at least 5 characters';
-}
-
-var el = document.getElementById('username');
-var elMsg = document.getElementById('feedback');
-
-el.addEventListener('focus', tipUsername, false);
-el.addEventListener('blur', checkUsername, false);
-                            </code></pre>
-                        </section>
-                        <section>
-                            <h3>Click</h3>
-                            <pre><code contenteditable>
-var msg = '<div class="header"><a id="close" href="#">close X</a></div>';
-msg += '<div><h2>System Maintenance</h2>';
-msg += 'Our servers are being updated between 3 and 4 a.m. ';
-msg += 'During this time, there may be minor disruptions to service.</div>';
-
-var elNote = document.createElement('div');
-elNote.setAttribute('id', 'note');
-elNote.innerHTML = msg;
-document.body.appendChild(elNote);
-
-function dismissNote() {
-  document.body.removeChild(elNote);
-}
-
-var elClose = document.getElementById('close');
-elClose.addEventListener('click', dismissNote, false);
-                            </code></pre>
-                        </section>
-                        <section>
-                            <h3>Mouse</h3>
-                            <p><em>пример</em></p>
-                        </section>  
-                        <section>
-                            <h3>keypress</h3>
-                            <p><em>пример</em></p>
-                        </section>                 
-                </section>
-                <section>
-                    <section>
-                        <h2>HTML5 события</h2>
-                    </section>
-                    <section>
-                        <h3>beforeunload</h3>
-                        <pre><code>
-window.addEventListener('beforeunload', function(event) {
-  var message = 'You have changes that have not been saved';
-  (event || window.event).returnValue = message;
-  return message;
-});
-                        </code></pre>
-                    </section>
-                    
-                </section>
-                <section>
-                    <section>
-                    <h2>Homework</h2>
-                    <h3>https://github.com/korshuk/jsfe</h3>
-                    </section>
-                    <section>
-                        <h3>ToDo app</h3>
-                        <ul>
-                            <li>На странице есть инпут и кнопка Ок</li>
-                            <li>Есть список событий (сначала пустой)</li>
-                            <li>Если что-то ввести в инпут и нажать Ок, то в списке событий повляется новый элемент с состоянием "Незаконченное"</li>
-                            <li>По этому элементу можно кликнуть мышкой, тогда его состояние должно смениться на "Завершено"</li>
-                            <li>Завершенные события должно быть можно удалять</li>
-                            <li>Будет хорошо, если список событий (не DOM элемент, а именно массив событий) не будет храниться ни в какой переменно</li>
-                        </ul>
-                    </section>
-                </section>
+                
             </div>
         </div>
 
