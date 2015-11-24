@@ -230,23 +230,6 @@ a.show{
 #itemDescription {width: 360px;}
 #newItemForm input[type='submit'] {margin-top: 0; text-align: left;}
 
-#body #page {margin-top: 130px;}
-
-#stats {
-  background-color: #6cc0ac;
-  color: #ffffff; 
-  position: fixed; 
-  top: 0; 
-  left: 0; 
-  padding: 20px; 
-  width: 100%;}
-
-#stats input[type="text"] {
-  width: 80px;
-  margin: 0 10px 0 10px;
-  background-color: #fff;
-  border-color: #fff;}
-
 /* Attributes example */
 #group {
   margin: 10px;

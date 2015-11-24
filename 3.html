@@ -41,72 +41,233 @@
             <!-- Any section element inside of this container is displayed as a slide -->
             <div class="slides">
                 <section>
-                    <h1>jQuery</h1>
-                    <ul class="fragment">
-                        <li>Поиск элементов с помощью CSS-селекторов</li>
-                        <li>Изменение элементов</li>
-                    </ul>
-                </section>
-                <section>
-                    <h2>Пример страницы с использованием jQuery</h2>
-                </section>
-                <section>
-                    <h2>Зачем использовать jQuery?</h2>
-                    <p>
-                        <a href="https://jquery.com/">jquery.com</a>
-                    </p>
-                    <ul class="fragment">
-                        <li>Простой поиск элементов</li>
-                        <li>Меньше кода для простых задач (+/-)</li>
-                        <li>Кроссбраузерно</li>
-                    </ul>
-                    <p class="fragment" align="left">
-                        1.X.Y или 2.X.Y?<br>
-                        обязательно оставлять номер версии файла
-                    </p>
-                    <blockquote class="fragment">
-                        <h4>Как не использовать jQuery)))</h4>
-                        <a href="http://zeptojs.com/">zepto.js</a><br>
-                        <a href="http://youmightnotneedjquery.com/">You might not need jQuery</a>
-                        <a href="http://jsperf.com/vanilla-js-vs-jquery-vs-zepto">сравнительные тесты</a>
-                    </blockquote>
-                </section>
-                <section>
-                    <h2>jQuery</h2>
-                    <a href="http://oscarotero.com/jquery/">jQuery cheat sheet</a>
-                </section>
-                <section>
-                    <h2>Основы</h2>
-                    <p>jQuery возвращает объект "jQurey selection"</p>
-                    <pre><code class="javascript">
-$('ul')
-
-$('li')
-                    </code></pre>
-                    <p>Большинство методов получают информацию из первого и изменяют информацию во всех элементах "jQurey selection"</p>
-                    <pre><code class="javascript">
-var conten = $('li').html();
-
-$('li').html('Updated');
-                    </code></pre>
-                </section>
-                <section>
-                    <section>Фишки</section>
                     <section>
-                        <h2>Looping</h2>
-                        <pre><code class="javascript">
-$('li.hot').addClass('favorite');                       
-                        </code></pre>
-                        <p><em>пример</em></p>
+                        <h1>События</h1>
+                        <h2>(продолжение)</h2>
                     </section>
                     <section>
-                        <h2>Цепочки методов</h2>
-                        <pre><code class="javascript">
-$('li[id!="one"]').hide().delay(500).fadeIn(1400);                        
+                        <h2>Как передать параметр в реакцию на событие</h2>
+                        <div class="fragment">
+                            <pre><code>
+var elUsername = document.getElementById('username');
+var elMsg      = document.getElementById('feedback');
+
+function checkUsername(minLength) {
+  if (elUsername.value.length < minLength) {
+
+    elMsg.innerHTML = 'Username must be ' + minLength + ' characters or more';
+  } else {
+    elMsg.innerHTML = '';
+  }
+}
+                            </code></pre>
+                        </div>
+                        <div class="fragment">
+                            <pre><code>
+elUsername.addEventListener('blur', function() {
+  checkUsername(5);
+}, false);
+                            </code></pre>
+                        </div>
+                    </section>
+                    
+                </section>
+                <section>
+                    <section>
+                        <h2>Как поддерживать старые IE</h2>
+                         <div class="fragment">
+                            <pre><code>
+if (elUsername.addEventListener) {
+
+  elUsername.addEventListener('blur', function(){
+    checkUsername(5);
+  }, false);
+
+} else {
+
+  elUsername.attachEvent('onblur', function(){
+    checkUsername(5);
+  });
+
+}                                
+                            </code></pre>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h2>Судьба события</h2>
+                        <p>(Event flow)</p>
+                    </section>
+                    <section>
+                        <h3>Event bubbling & capturing</h3>
+                         <img src="res/2/event-flow.png">
+                    </section>
+                    <section>
+                        <h3>пример</h3>
+                    </section>
+                </section>
+                 <section>
+                    <section>
+                        <h2>Объект event</h2>
+                        <pre class="javascript"><code>
+//Property
+event.target
+
+event.type
+
+//Methods
+event.preventDefault()
+
+event.stopPropagation()                        
                         </code></pre>
+                    </section>
+                    <section>
+                            <h3>Объект Event и IE5-8</h3>
+                            <pre class="javascript"><code>
+if (!e) {
+  e = window.event;
+}
+el = e.target || e.srcElement;
+                            </code></pre>
+                            <p class="fragment"><em>пример</em></p>
+                        </section>
+                        <section>
+                            <h3>Изменение стандартного поведения</h3>
+                            <pre class="fragment javascript"><code>
+if (e.preventDefault) {
+    e.preventDefault();
+} else {
+    e.returnValue = false;
+}
+                            </code></pre>
+                            <pre class="fragment javascript"><code>
+if (e.stopPropagation) {
+    e.stopPropagation();
+} else {
+    e.cancelBubble = false;
+}
+                            </code></pre>
+                            <pre class="fragment javascript"><code>
+return false;
+                            </code></pre>
+                        </section>
+                </section>
+                <section>
+                    <section>
+                        <h2>Делегирование событий</h2>
                         <p><em>пример</em></p>
                     </section>
                 </section>
+                <section>
+                    <section>
+                        <h2>Примеры событий</h2>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h2>UI события</h2>
+                    </section>
+                        <section>
+                            <h3>load</h3>
+                            <pre><code contenteditable>
+function setup() {
+  var textInput;
+  textInput = document.getElementById('username');
+  textInput.focus();
+}
+
+window.addEventListener('load', setup, false);
+                            </code></pre>
+                        </section>
+                        <section>
+                            <h3>Focus и Blur</h3>
+                            <pre><code contenteditable>
+function checkUsername() {
+  var username = el.value;
+  if (username.length < 5) {
+    elMsg.className = 'warning';
+    elMsg.textContent = 'Not long enough, yet...';
+  } else {
+    elMsg.textContent = '';
+  }
+}
+
+function tipUsername() {
+  elMsg.className = 'tip';
+  elMsg.innerHTML = 'Username must be at least 5 characters';
+}
+
+var el = document.getElementById('username');
+var elMsg = document.getElementById('feedback');
+
+el.addEventListener('focus', tipUsername, false);
+el.addEventListener('blur', checkUsername, false);
+                            </code></pre>
+                        </section>
+                        <section>
+                            <h3>Click</h3>
+                            <pre><code contenteditable>
+var msg = '<div class="header"><a id="close" href="#">close X</a></div>';
+msg += '<div><h2>System Maintenance</h2>';
+msg += 'Our servers are being updated between 3 and 4 a.m. ';
+msg += 'During this time, there may be minor disruptions to service.</div>';
+
+var elNote = document.createElement('div');
+elNote.setAttribute('id', 'note');
+elNote.innerHTML = msg;
+document.body.appendChild(elNote);
+
+function dismissNote() {
+  document.body.removeChild(elNote);
+}
+
+var elClose = document.getElementById('close');
+elClose.addEventListener('click', dismissNote, false);
+                            </code></pre>
+                        </section>
+                        <section>
+                            <h3>Mouse</h3>
+                            <p><em>пример</em></p>
+                        </section>  
+                        <section>
+                            <h3>keypress</h3>
+                            <p><em>пример</em></p>
+                        </section>                 
+                </section>
+                <section>
+                    <section>
+                        <h2>HTML5 события</h2>
+                    </section>
+                    <section>
+                        <h3>beforeunload</h3>
+                        <pre><code>
+window.addEventListener('beforeunload', function(event) {
+  var message = 'You have changes that have not been saved';
+  (event || window.event).returnValue = message;
+  return message;
+});
+                        </code></pre>
+                    </section>
+                    
+                </section>
+                <section>
+                    <section>
+                    <h2>Homework</h2>
+                    <h3>https://github.com/korshuk/jsfe</h3>
+                    </section>
+                    <section>
+                        <h3>ToDo app</h3>
+                        <ul>
+                            <li>На странице есть инпут и кнопка Ок</li>
+                            <li>Есть список событий (сначала пустой)</li>
+                            <li>Если что-то ввести в инпут и нажать Ок, то в списке событий повляется новый элемент с состоянием "Незаконченное"</li>
+                            <li>По этому элементу можно кликнуть мышкой, тогда его состояние должно смениться на "Завершено"</li>
+                            <li>Завершенные события должно быть можно удалять</li>
+                            <li>Будет хорошо, если список событий (не DOM элемент, а именно массив событий) не будет храниться ни в какой переменно</li>
+                        </ul>
+                    </section>
+                </section>
+               
             </div>
         </div>
 
