@@ -1,5 +1,5 @@
 $(function() {
-  
+
   $('li').each(function(index, item) {
         
     var id = this.id; //bad

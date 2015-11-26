@@ -40,9 +40,73 @@
 
             <!-- Any section element inside of this container is displayed as a slide -->
             <div class="slides">
-                <section>
+            
+                 <section>
                     <h1>jQuery</h1>
-                    <h2>продолжение</h2>
+                    <ul class="fragment">
+                        <li>Поиск элементов с помощью CSS-селекторов</li>
+                        <li>Изменение элементов</li>
+                    </ul>
+                </section>
+                <section>
+                    <h2>Пример страницы с использованием jQuery</h2>
+                </section>
+                <section>
+                    <h2>Зачем использовать jQuery?</h2>
+                    <p>
+                        <a href="https://jquery.com/">jquery.com</a>
+                    </p>
+                    <ul class="fragment">
+                        <li>Простой поиск элементов</li>
+                        <li>Меньше кода для простых задач (+/-)</li>
+                        <li>Кроссбраузерно</li>
+                    </ul>
+                    <p class="fragment" align="left">
+                        1.X.Y или 2.X.Y?<br>
+                        обязательно оставлять номер версии файла
+                    </p>
+                    <blockquote class="fragment" style="font-size: 16px;">
+                        <h4>Как не использовать jQuery)))</h4>
+                        <a href="http://zeptojs.com/">zepto.js</a><br>
+                        <a href="http://youmightnotneedjquery.com/">You might not need jQuery</a><br>
+                        <a href="http://jsperf.com/vanilla-js-vs-jquery-vs-zepto">сравнительные тесты</a>
+                    </blockquote>
+                </section>
+                <section>
+                    <h2>jQuery</h2>
+                    <a href="http://oscarotero.com/jquery/">jQuery cheat sheet</a>
+                </section>
+                <section>
+                    <h2>Основы</h2>
+                    <p>jQuery возвращает объект "jQurey selection"</p>
+                    <pre><code class="javascript">
+$('ul')
+
+$('li')
+                    </code></pre>
+                    <p>Большинство методов получают информацию из первого и изменяют информацию во всех элементах "jQurey selection"</p>
+                    <pre><code class="javascript">
+var conten = $('li').html();
+
+$('li').html('Updated');
+                    </code></pre>
+                </section>
+                <section>
+                    <section>Фишки</section>
+                    <section>
+                        <h2>Looping</h2>
+                        <pre><code class="javascript">
+$('li.hot').addClass('favorite');                       
+                        </code></pre>
+                        <p><em>пример</em></p>
+                    </section>
+                    <section>
+                        <h2>Цепочки методов</h2>
+                        <pre><code class="javascript">
+$('li[id!="one"]').hide().delay(500).fadeIn(1400);                        
+                        </code></pre>
+                        <p><em>пример</em></p>
+                    </section>
                 </section>
                 <section>
                     <h2>Готова ли страница для работы?</h2>

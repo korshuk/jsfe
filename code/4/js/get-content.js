@@ -10,7 +10,7 @@ $(function() {
  //  	var $listItemHTML = $('li').html();
  // 	$('li').append('<i>' + $listItemHTML + '</i>');
 
-  	var $listItemText = $('li').text();
+  	var $listItemText = $('li').html();
   	$('li').append('<i>' + $listItemText + '</i>');
   	
 });
